@@ -51,9 +51,9 @@
 <hr>
 <p>###二、浏览器的标准模式和怪异模式</p>
 <p>在标准模式页面按照HTML,CSS的定义渲染，而在怪异模式就是浏览器为了兼容很早之前针对旧版本浏览器设计，并未严格遵循W3C标准而产生的一种页面渲染模式。浏览器基于页面中文件类型描述的存在以决定采用哪种渲染模式，如果存在一个完整的DOCTYPE则浏览器将会采用标准模式，如果缺失就会采用怪异模式。下面介绍标准模式和怪异模式之间的区别。</p>
-<h4 id="1、盒模型"><a href="#1、盒模型" class="headerlink" title="1、盒模型"></a>1、盒模型</h4><p>在怪异模式下，盒模型为IE盒模型，<br><img src="/2018/01/13/2018前端校招总结(HTML篇)/img/IE盒子.png" alt=""> </p>
+<h4 id="1、盒模型"><a href="#1、盒模型" class="headerlink" title="1、盒模型"></a>1、盒模型</h4><p>在怪异模式下，盒模型为IE盒模型，<br><img src="/img/IE盒子.png" alt=""> </p>
 <p>而在W3C标准的盒模型中为</p>
-<p><img src="/2018/01/13/2018前端校招总结(HTML篇)/img/标准盒子.png" alt="">  </p>
+<p><img src="/img/标准盒子.png" alt="">  </p>
 <h4 id="2、图片元素的垂直对齐方式："><a href="#2、图片元素的垂直对齐方式：" class="headerlink" title="2、图片元素的垂直对齐方式："></a>2、图片元素的垂直对齐方式：</h4><p>对于inline元素和table-cell元素，标准模式下vertical-align属性默认取值为baseline，在怪异模式下，table单元格中的图片的vertical-align属性默认取值为bottom，因此在图片底部会有及像素的空间。</p>
 <h4 id="3、元素中的字体："><a href="#3、元素中的字体：" class="headerlink" title="3、元素中的字体："></a>3、元素中的字体：</h4><p>CSS中，对于font的属性都是可以继承的，怪异模式下，对于table元素，字体的某些元素将不会从body等其他封装元素中继承得到，特别是font-size属性。</p>
 <h4 id="4、内联元素的尺寸："><a href="#4、内联元素的尺寸：" class="headerlink" title="4、内联元素的尺寸："></a>4、内联元素的尺寸：</h4><p>标准模式下，non-replaced inline元素无法自定义大小，怪异模式下，定义这些元素的width，height属性可以影响这些元素显示的尺寸。</p>

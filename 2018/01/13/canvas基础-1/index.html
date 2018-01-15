@@ -21,17 +21,17 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineWidth = 30;</span><br></pre></td></tr></table></figure>
 <p>第五步：绘制</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/01/13/canvas基础-1/img/1.png" alt=""></p>
+<p><img src="/img/1.png" alt=""></p>
 <h3 id="2、绘制文字"><a href="#2、绘制文字" class="headerlink" title="2、绘制文字"></a>2、绘制文字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.fillText(&quot;Hello World&quot;,100,100);</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/01/13/canvas基础-1/img/2.png" alt=""></p>
+<p><img src="/img/2.png" alt=""></p>
 <h3 id="3、画圆"><a href="#3、画圆" class="headerlink" title="3、画圆"></a>3、画圆</h3><p>arc(圆心x,圆心y,半径,起始弧度,结束弧度,boolean(true:逆时针 false:顺时针))</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.arc(250,250,100,0,Math.PI*2);</span><br></pre></td></tr></table></figure>
 <p>填充颜色</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.fillStyle = &quot;brown&quot;;</span><br><span class="line">ctx.fill();</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/01/13/canvas基础-1/img/3.png" alt=""></p>
+<p><img src="/img/3.png" alt=""></p>
 <h3 id="4、绘制图片"><a href="#4、绘制图片" class="headerlink" title="4、绘制图片"></a>4、绘制图片</h3><p>创建图片对象</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var theImg = new Image();</span><br><span class="line">theImg.src = &quot;img/八哥犬.jpg&quot;</span><br><span class="line">theImg.onload = function (ev) &#123;</span><br><span class="line">        //drawImage(图片对象,起始位置(左上角坐标):X Y)</span><br><span class="line">        // ctx.drawImage(this,10,0);</span><br><span class="line"></span><br><span class="line">        //drawImage(图片对象,起始位置(左上角坐标):X Y,图片宽高：W H)</span><br><span class="line">        // ctx.drawImage(this,100,100,300,300);</span><br><span class="line"></span><br><span class="line">        //drawImage(图片对象,图片截取位置X Y，截取宽高W H,绘制到画布的起始位置(左上角坐标):X Y,绘制宽高：W H)</span><br><span class="line">        ctx.drawImage(this,10,10,100,100,20,20,200,200);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/01/13/canvas基础-1/img/4.png" alt=""></p>
+<p><img src="/img/4.png" alt=""></p>
 <p>Canvas除了能绘制基本的形状和文本，还可以实现动画、缩放、各种滤镜和像素转换等高级操作。如果要实现非常复杂的操作，考虑以下优化方案：</p>
 <ul>
 <li>通过创建一个不可见的Canvas来绘图，然后将最终绘制结果复制到页面的可见Canvas中；</li>
