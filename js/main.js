@@ -1,132 +1,204 @@
-$(function () {
+require([], function (){
 
-	$('.post__main img').on('click', function () {
-		var $img = $(this);
+    var isMobileInit = false;
+    var loadMobile = function(){
+        require([yiliaConfig.rootUrl + 'js/mobile.js'], function(mobile){
+            mobile.init();
+            isMobileInit = true;
+        })
+    }
+    var isPCInit = false;
+    var loadPC = function(){
+        require([yiliaConfig.rootUrl + 'js/pc.js'], function(pc){
+            pc.init();
+            isPCInit = true;
+        })
+    }
 
-		$.fancybox.open([{
-			src: $img.attr('src'),
-			type: 'image'
-		}]);
-	});
+    var browser = {
+        versions: function() {
+        var u = window.navigator.userAgent;
+        return {
+            trident: u.indexOf('Trident') > -1, //IE内核
+            presto: u.indexOf('Presto') > -1, //opera内核
+            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+            iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+            iPad: u.indexOf('iPad') > -1, //是否为iPad
+            webApp: u.indexOf('Safari') == -1 ,//是否为web应用程序，没有头部与底部
+            weixin: u.indexOf('MicroMessenger') == -1 //是否为微信浏览器
+            };
+        }()
+    }
 
-	$('[data-fancybox]').fancybox({
-		// closeClickOutside: false, 
-		image: {
-			protect: true
-		}
-	});
+    $(window).bind("resize", function() {
+        if (isMobileInit && isPCInit) {
+            $(window).unbind("resize");
+            return;
+        }
+        var w = $(window).width();
+        if (w >= 700) {
+            loadPC();
+        } else {
+            loadMobile();
+        }
+    });
 
-	// key bind
+    if(!!browser.versions.mobile || $(window).width() < 800){
+        loadMobile();
+    } else {
+        loadPC();
+    }
 
-	// j  down
-	// k  top
-	// t  page top
-	// b  page bottom
+    resetTags = function(){
+        var tags = $(".tagcloud a");
+        for(var i = 0; i < tags.length; i++){
+            var num = Math.floor(Math.random()*7);
+            tags.eq(i).addClass("color" + num);
+        }
+        $(".article-category a:nth-child(-n+2)").attr("class", "color0");
+    }
 
-	// i  go index
-	var $body = $('html');
+    // fancyBox
+    if(!!yiliaConfig.fancybox){
+        require([yiliaConfig.fancybox_js], function(pc){
+            var isFancy = $(".isFancy");
+            if(isFancy.length != 0){
+                var imgArr = $(".article-inner img");
+                for(var i=0,len=imgArr.length;i<len;i++){
+                    var src = imgArr.eq(i).attr("src");
+                    var title = imgArr.eq(i).attr("alt");
+                    if(typeof(title) == "undefined"){
+                        var title = imgArr.eq(i).attr("title");
+                    }
+                    var width = imgArr.eq(i).attr("width");
+                    var height = imgArr.eq(i).attr("height");
+                    imgArr.eq(i).replaceWith("<a href='"+src+"' title='"+title+"' rel='fancy-group' class='fancy-ctn fancybox'><img src='"+src+"' width="+width+" height="+height+" title='"+title+"' alt='"+title+"'></a>");
+                }
+                $(".article-inner .fancy-ctn").fancybox({ type: "image" });
+            }
+        })
+    }
 
-	var isKeydown = false;
-	$body.on('keydown', function (e) {
-		// console.log(e.which, 'key down');
+    // Animate on Homepage
+    if(!!yiliaConfig.animate) {
+        if(!!yiliaConfig.isHome) {
+            require([yiliaConfig.scrollreveal], function (ScrollReveal) {
+                var animationNames = [
+                "pulse", "fadeIn","fadeInRight", "flipInX", "lightSpeedIn","rotateInUpLeft", "slideInUp","zoomIn",
+                ],
+                len = animationNames.length,
+                randomAnimationName = animationNames[Math.ceil(Math.random() * len) - 1];
 
-		switch (e.which) {
-			case 74: // j down
-				if (!isKeydown) {
-					isKeydown = true;
-					requestAnimationFrame(function animate() {
-						var curTop = window.scrollY;
-						window.scrollTo(0, curTop + 15);
+                // Fallback (CSS3 keyframe, requestAnimationFrame)
+                if (!window.requestAnimationFrame) {
+                    $('.body-wrap > article').css({opacity: 1});
+                    if (navigator.userAgent.match(/Safari/i)) {
+                        function showArticle(){
+                            $(".article").each(function(){
+                                if( $(this).offset().top <= $(window).scrollTop()+$(window).height() && !($(this).hasClass('show')) ) {
+                                    $(this).removeClass("hidden").addClass("show");
+                                    $(this).addClass("is-hiddened");
+                                } else {
+                                    if(!$(this).hasClass("is-hiddened")) {
+                                        $(this).addClass("hidden");
+                                    }
+                                }
+                            })
+                        }
+                        $(window).on('scroll', function(){
+                            showArticle();
+                        });
+                        showArticle();
+                    }
+                    return;
+                }
 
-						if (isKeydown) {
-							requestAnimationFrame(animate);
-						}
-					});
-				}
+                var animateScope = ".body-wrap > article";
+                var $firstArticle = $(".body-wrap > article:first-child");
+                if ($firstArticle.height() > $(window).height()) {
+                    var animateScope = ".body-wrap > article:not(:first-child)";
+                    $firstArticle.css({opacity: 1});
+                }
+                ScrollReveal({
+                    duration: 0,
+                    afterReveal: function (domEl) {
+                        $(domEl).addClass('animated ' + randomAnimationName).css({opacity: 1})
+                    }
+                }).reveal(animateScope);
+            })
+        } else {
+            $('.body-wrap > article').css({opacity: 1});
+        }
+    }
 
-				break;
+    // TOC
+    if (yiliaConfig.toc) {
+        require(['toc'], function(){ })
+    }
 
-			case 75: // k up
-				if (!isKeydown) {
-					isKeydown = true;
-					requestAnimationFrame(function animate() {
-						var curTop = window.scrollY;
-						window.scrollTo(0, curTop - 15);
+    // Random Color 边栏顶部随机颜色
+    var colorList = ["#6da336", "#ff945c", "#66CC66", "#99CC99", "#CC6666", "#76becc", "#c99979", "#918597", "#4d4d4d"];
+    var id = Math.ceil(Math.random()*(colorList.length-1));
+    // PC
+    $("#container .left-col .overlay").css({"background-color": colorList[id],"opacity": .3});
+    // Mobile
+    $("#container #mobile-nav .overlay").css({"background-color": colorList[id],"opacity": .7});
 
-						if (isKeydown) {
-							requestAnimationFrame(animate);
-						}
-					});
-				}
+    // Table
+    $("table").wrap("<div class='table-area'></div>");
 
-				break;
+    // Hide Comment Button
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        }
+    })
 
-			case 191: // shift + / = ? show help modal
-				break;
+    // Hide Labels
+    if(yiliaConfig.isArchive || yiliaConfig.isTag || yiliaConfig.isCategory) {
+        $(document).ready(function() {
+            $("#footer").after("<button class='hide-labels'>TAGS</button>");
+            $(".hide-labels").click(function() {
+                $(".article-info").toggle(200);
+            })
+        })
+    }
 
-				// 16 shift
-			case 84: // t
-				window.scrollToTop(1);
-				break;
+    // Task lists in markdown
+    $('ul > li').each(function() {
+        var taskList = {
+            field: this.textContent.substring(0, 2),
+            check: function(str) {
+                var re = new RegExp(str);
+                return this.field.match(re);
+            }
+        }
 
-			case 66: // b
-				window.scrollToBottom();
-				break;
+        var string = ["[ ]", ["[x]", "checked"]];
+        var checked = taskList.check(string[1][0]);
+        var unchecked = taskList.check(string[0]);
 
-			case 78: // n half
-				window.scrollPageDown(1);
-				break;
+        var $current = $(this);
+        function update(str, check) {
+            var click = ["disabled", ""];
+            $current.html($current.html().replace(
+              str, "<input type='checkbox' " + check + " " + click[1] + " >")
+            )
+        }
 
-			case 77: // m
-				window.scrollPageUp(1);
-				break;
-		}
+        if (checked || unchecked) {
+            this.classList.add("task-list");
+            if (checked) {
+                update(string[1][0], string[1][1]);
+                this.classList.add("check");
+            } else {
+                update(string[0], "");
+            }
+        }
+    })
 
-	});
-
-	$body.on('keyup', function (e) {
-		isKeydown = false;
-	});
-
-	// print hint
-
-	var comments = [
-		'',
-		'                    .::::.            快捷键：',
-		'                  .::::::::.            j：下移',
-		'                 :::::::::::            k：上移',
-		"             ..:::::::::::'             t：移到最顶",
-		"           '::::::::::::'               b：移到最底",
-		'             .::::::::::                n：下移很多',
-		"        '::::::::::::::..               m：上移很多",
-		'             ..::::::::::::.',
-		'           ``::::::::::::::::',
-		"            ::::``:::::::::'        .:::.",
-		"           ::::'   ':::::'       .::::::::.",
-		"         .::::'      ::::     .:::::::'::::.",
-		"        .:::'       :::::  .::::::::'  ':::::.",
-		"       .::'        :::::::::::::::'      ':::::.",
-		"      .::'        :::::::::::::::'          ':::.",
-		"  ...:::          :::::::::::::'              ``::.",
-		" ```` ':.         '::::::::::'                  ::::..",
-		"                    ':::::'                    ':'````..",
-		''
-	];
-
-	comments.forEach(function (item) {
-		console.log('%c' + item, 'color: #399c9c');
-	});
-
-	$('.btn-reward').on('click', function (e) {
-		e.preventDefault();
-
-		var $reward = $('.reward-wrapper');
-		$reward.slideToggle();
-	});
-
-	$('body').addClass('queue-in');
-	setTimeout(function() {
-		$('body').css({ opacity: 1}).removeClass('queue-in');
-	}, 500);
-
-});
+})
