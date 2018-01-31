@@ -214,48 +214,7 @@
 <li>都会触发render更新</li>
 <li>都具有确定性</li>
 </ul>
-<h4 id="2、对比"><a href="#2、对比" class="headerlink" title="2、对比"></a>2、对比</h4><table>
-<thead>
-<tr>
-<th>-</th>
-<th style="text-align:center">属性( props)</th>
-<th style="text-align:center">状态(state)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>能否从父组件获取初始值</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">×</td>
-</tr>
-<tr>
-<td>能否由父组件修改</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">×</td>
-</tr>
-<tr>
-<td>能否在组件内部设置默认值</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">√</td>
-</tr>
-<tr>
-<td>能否在组件内部修改</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">√</td>
-</tr>
-<tr>
-<td>能否设置子组件的初始值</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">×</td>
-</tr>
-<tr>
-<td>能否修改子组件的值</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">×</td>
-</tr>
-</tbody>
-</table>
-<p><img src="/img/属性状态对比.png" alt="属性状态对比"></p>
+<h4 id="2、对比"><a href="#2、对比" class="headerlink" title="2、对比"></a>2、对比</h4><p><img src="/img/属性状态对比.png" alt="属性状态对比"></p>
 <p>状态只和组件本身相关，组件不能修改属性</p>
 <h4 id="3、区分"><a href="#3、区分" class="headerlink" title="3、区分"></a>3、区分</h4><ul>
 <li><p>状态和属性都会触发render更新，都是纯JS对象</p>
