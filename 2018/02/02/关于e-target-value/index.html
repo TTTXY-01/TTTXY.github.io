@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives | TTTXY&#39;s Blog</title>
+  <title>关于e.target.value | TTTXY&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -166,78 +166,54 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/01/13/2018前端校招总结(HTML篇)/">前端校招总结(HTML篇)</a></h4>
-                            
-                            <p><time datetime="2018-01-13T01:07:08.000Z"><a href="/2018/01/13/2018前端校招总结(HTML篇)/">2018-01-13</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/01/12/Author/">Title</a></h4>
-                            
-                            <p><time datetime="2018-01-12T11:09:29.000Z"><a href="/2018/01/12/Author/">2018-01-12</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-02-02T01:03:32.000Z" itemprop="datePublished">
+          2018-02-02
+      </time>
+    
+    
+    | 
+    <a href='/tags/react-this/'>react this</a>
+    
+    
+</span>
+                <h1>关于e.target.value</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="e-target-value是怎么获得数据的？"><a href="#e-target-value是怎么获得数据的？" class="headerlink" title="e.target.value是怎么获得数据的？"></a>e.target.value是怎么获得数据的？</h2><p>每次触发DOM事件时会产生一个事件对象（也称event对象），此处的参数e接收事件对象。而事件对象也有很多属性和方法，其中target属性是获取触发事件对象的目标，也就是绑定事件的元素，e.target表示该DOM元素，然后在获取其相应的属性值。</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.target1'</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">	$(<span class="string">"#result"</span>).html(e.target.value)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">e.target就等价于$(<span class="string">'target1'</span>)</span><br><span class="line">故e.target.value就等价于$(<span class="string">'target1'</span>).val()</span><br></pre></td></tr></table></figure>
+<p>​    初学者一般会把<strong>e.target</strong>和<strong>this</strong>弄混，搞不懂这两个具体指向哪个元素。简单来说，<strong>this</strong>就是指向当前事件所绑定的元素，而<strong>e.target</strong>指向事件执行时鼠标所点击区域的那个元素。容易搞不懂的地方是，初学者会认为当前事件所绑定的元素不就是鼠标所点击的那个元素嘛，这时候就要看看时间绑定的元素内部有没有子元素了，如果有子元素的话<strong>e.target</strong>指向这个子元素，如果没有，<strong>e.target</strong>和<strong>this</strong>都指向事件所绑定的元素。</p>
+<p>在表单中，select元素，input元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input[type=<span class="string">"text"</span>],input[type=<span class="string">"button"</span>],input[type=<span class="string">"radio"</span>],input[type=<span class="string">"checkbox"</span>]</span><br></pre></td></tr></table></figure>
+<p>等等都有value属性，e.target.value获取的就是你选择接受事件的元素输入的或者选择的值。</p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2018/01/31/Markdown常用转义字符/">
+        Markdown常用转义字符 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
