@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>深入理解JavaScript事件 | TTTXY&#39;s Blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="TTTXY's Blog">
+    <meta name="author" content="TTTXY">
+    <meta name="description" content="the stack of it nerds" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="TTTXY&#39;s Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">TTTXY's Blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/TTTXY-01" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-02-05T00:38:10.000Z" itemprop="datePublished">
+          2018-02-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/JavaScript-事件/'>JavaScript 事件</a>
+    
+    
+</span>
+                <h1>深入理解JavaScript事件</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="什么是事件"><a href="#什么是事件" class="headerlink" title="什么是事件?"></a>什么是事件?</h1><p><strong>事件是可以被 JavaScript 侦测到的行为。</strong></p>
+<p>JavaScript 使我们有能力创建动态页面。事件是可以被 JavaScript 侦测到的行为。</p>
+<p>网页中的每个元素都可以产生某些可以触发 JavaScript 函数的事件。比方说，我们可以在用户点击某按钮时产生一个 onClick 事件来触发某个函数。事件在 HTML 页面中定义。</p>
+<h3 id="事件举例："><a href="#事件举例：" class="headerlink" title="事件举例："></a>事件举例：</h3><ul>
+<li>HTML 页面完成加载</li>
+<li>HTML input 字段改变时</li>
+<li>HTML 按钮被点击</li>
+</ul>
+<p>注意：事件通常与函数配合使用，当事件发生时函数才会执行。</p>
+<h2 id="常见的HTML事件"><a href="#常见的HTML事件" class="headerlink" title="常见的HTML事件"></a>常见的HTML事件</h2><p>下面是一些常见的HTML事件:</p>
+<p>1、页面加载完毕后、执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过id获取页面元素</span></span><br><span class="line"><span class="keyword">var</span> myDIV = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myDIV);</span><br><span class="line">alert(myDIV);</span><br></pre></td></tr></table></figure>
+<p>2、点击事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myDIV.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="string">"点到div啦"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、鼠标事件</p>
+<p>3.1、鼠标移入事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myDIV.onmouseover=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="string">"onmouseover”);</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>3.2、鼠标移出事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">myDIV.onmouseout=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="string">"onmouseout"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//注意：与hover的区别</span></span><br><span class="line"><span class="comment">//1、hover只能控制后代元素，事件随意</span></span><br><span class="line"><span class="comment">//2、hover移出后会回到之前的状态</span></span><br></pre></td></tr></table></figure>
+<p>3.3、鼠标其他事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oAll = <span class="built_in">document</span>.getElementById(<span class="string">"all"</span>);</span><br><span class="line">oAll.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"点到我啦！"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//onmouseover、nmouseout：鼠标移动到自身时候会触发事件，同时移动到其子元素身上也会触发事件</span></span><br><span class="line">oAll.onmouseover = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"进来了"</span>);</span><br><span class="line">&#125;</span><br><span class="line">oAll.onmouseout = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"出去了"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//onmouseenter、onmouseleave：鼠标移动到自身是会触发事件，但是移动到其子元素身上不会触发事件</span></span><br><span class="line">oAll.onmouseenter = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"onmouseenter"</span>);</span><br><span class="line">&#125;</span><br><span class="line">oAll.onmouseleave = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"onmouseleave"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//双击</span></span><br><span class="line">oAll.ondblclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"双击我！"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//鼠标按下</span></span><br><span class="line">oAll.onmousedown = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"鼠标按下"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//鼠标抬起（必须在元素内才生效）</span></span><br><span class="line">oAll.onmouseup = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"鼠标抬起"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//鼠标在元素内移动时响应</span></span><br><span class="line">oAll.onmousemove = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"动一动"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.4、鼠标事件对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oAll = <span class="built_in">document</span>.getElementById(<span class="string">"all"</span>);</span><br><span class="line"><span class="comment">//鼠标按下</span></span><br><span class="line">oAll.onmousedown = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">	<span class="comment">//事件对象：包含事件相关的所有信息，通过其属性获取</span></span><br><span class="line">	<span class="comment">//window.event 兼容IE</span></span><br><span class="line">	<span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">	<span class="built_in">console</span>.log(ev);</span><br><span class="line">	<span class="keyword">switch</span>(ev.which) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"左键"</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"滚轮"</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"右键"</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、键盘事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//键盘按下事件 ，如果不抬起，会一直响应</span></span><br><span class="line"><span class="built_in">document</span>.onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"按我吧～"</span>);</span><br><span class="line">	<span class="comment">//字符的ASCII码</span></span><br><span class="line">	<span class="comment">//65~90 A~Z </span></span><br><span class="line">	<span class="comment">//97~122 a~z</span></span><br><span class="line">	<span class="built_in">console</span>.log(ev.keyCode);</span><br><span class="line">	<span class="comment">//通过ASCII码 转换成对应的字符</span></span><br><span class="line">	<span class="keyword">var</span> a = <span class="built_in">String</span>.fromCharCode(ev.keyCode);</span><br><span class="line">	<span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.1、组合键</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">	<span class="comment">//按下哪一个，哪一个为true 否则为false</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"alt:"</span> + ev.altKey);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"shift:"</span> + ev.shiftKey);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"ctrl:"</span> + ev.ctrlKey);</span><br><span class="line">	<span class="keyword">if</span> (ev.ctrlKey &amp;&amp; ev.keyCode == <span class="number">65</span>) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"ctrl+a"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、_this、this应用</p>
+<p>5.1.this应用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oAll = <span class="built_in">document</span>.getElementById(<span class="string">"all"</span>);</span><br><span class="line">oAll.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"🐒"</span> + <span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">abc();</span><br></pre></td></tr></table></figure>
+<p>5.2、_this应用</p>
+<p>html代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"all"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--绑定点击事件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onclick</span>=<span class="string">"theClick()"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oAll = <span class="built_in">document</span>.getElementById(<span class="string">"all"</span>);</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line">oAll.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">	<span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">	<span class="comment">//oAll innerHTML每隔1s加1</span></span><br><span class="line">	setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="comment">//console.log(this);</span></span><br><span class="line">		_this.innerHTML = a++;</span><br><span class="line">	&#125;,<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theClick</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、滚轮事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.onmousewheel = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">	<span class="comment">//console.log("我滚我滚我滚滚滚");</span></span><br><span class="line">	<span class="built_in">console</span>.log(ev.wheelDelta);</span><br><span class="line">	<span class="keyword">if</span> (ev.wheelDelta &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"向上滚"</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"向下滚"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6.1、滚轮事件（火狐）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"DOMMouseScroll"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">	<span class="built_in">console</span>.log(ev.detail);</span><br><span class="line">	<span class="keyword">if</span> (ev.detail &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"向下滚"</span>)</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"向上滚"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,<span class="literal">false</span>);</span><br><span class="line"><span class="comment">//判断是否为火狐浏览器</span></span><br><span class="line"><span class="comment">//true 非火狐  false 火狐</span></span><br><span class="line"><span class="keyword">var</span> isFireFox = <span class="built_in">window</span>.navigator.userAgent.indexOf(<span class="string">"Firefox"</span>) == <span class="number">-1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(isFireFox);</span><br></pre></td></tr></table></figure>
+<p>6.2、滚轮事件封装</p>
+<p>css代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">	<span class="selector-id">#all</span>&#123;</span><br><span class="line">		<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">         <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">         <span class="attribute">background-color</span>: black;</span><br><span class="line">         <span class="attribute">position</span>: absolute;</span><br><span class="line">     &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>html代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"all"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oAll = <span class="built_in">document</span>.getElementById(<span class="string">'all'</span>);</span><br><span class="line">    musewheel(oAll,<span class="function"><span class="keyword">function</span> (<span class="params">isdown</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(isdown)&#123;</span><br><span class="line">            oAll.style.width = oAll.offsetWidth + <span class="number">1</span> + <span class="string">'px'</span>;</span><br><span class="line">            oAll.style.height = oAll.offsetHeight + <span class="number">1</span> + <span class="string">'px'</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            oAll.style.width = oAll.offsetWidth - <span class="number">1</span> + <span class="string">'px'</span>;</span><br><span class="line">            oAll.style.height = oAll.offsetHeight - <span class="number">1</span> + <span class="string">'px'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">musewheel</span>(<span class="params">obj,fn</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> isFireFox = <span class="built_in">window</span>.navigator.userAgent.indexOf(<span class="string">'Firefox'</span>) == <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">if</span>(isFireFox)&#123;</span><br><span class="line">            obj.onmousewheel = whellScroll;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            obj.addEventListener(<span class="string">'DOMMouseScroll'</span>,whellScroll,<span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">whellScroll</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">            <span class="comment">//记录滚轮向上还是向下</span></span><br><span class="line">            <span class="comment">//默认true为向上走,false向下走</span></span><br><span class="line">            <span class="keyword">var</span> down = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(isFireFox)&#123;</span><br><span class="line">                <span class="keyword">if</span>(ev.wheelDelta &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'向上滚'</span>);</span><br><span class="line">                    down = <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(ev.detail &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'向上滚'</span>);</span><br><span class="line">                    down = <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            fn(down);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>7、表单事件</p>
+<p>7.1、焦点事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oText = <span class="built_in">document</span>.getElementById(<span class="string">"text"</span>);</span><br><span class="line">oText.onfocus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.value = <span class="string">"获取焦点"</span>;</span><br><span class="line">&#125;</span><br><span class="line">oText.onblur = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.value = <span class="string">"失去焦点"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7.2、onchange事件</p>
+<p>html代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"#"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">id</span>=<span class="string">"theForm"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"city"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"DL"</span>&gt;</span>大连<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"DQ"</span>&gt;</span>大庆<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"SJZ"</span>&gt;</span>石家庄<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oForm = <span class="built_in">document</span>.getElementById(<span class="string">"theForm"</span>);</span><br><span class="line"><span class="keyword">var</span> oText = <span class="built_in">document</span>.getElementById(<span class="string">"text"</span>);</span><br><span class="line"><span class="keyword">var</span> oCity = <span class="built_in">document</span>.getElementById(<span class="string">"city"</span>);</span><br><span class="line"><span class="comment">//onchange 失去焦点且value值发生变化</span></span><br><span class="line">oText.onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(oText.value);</span><br><span class="line">&#125;</span><br><span class="line">oCity.onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//内容发生变化时，响应</span></span><br><span class="line"><span class="comment">//H5新增方法</span></span><br><span class="line">oText.oninput = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"🍑"</span>+<span class="keyword">this</span>.value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//表单提交时，响应 点击submit时</span></span><br><span class="line">oForm.onsubmit = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"onsubmit"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>8、事件冒泡、取消事件冒泡</p>
+<p>8.1事件冒泡：当点击子元素时，会响应该子元素的所有父级元素的点击事件，如果某个父级元素没有处理函数，并不是元素没有接收到事件，是接收到事件后 ，事件没有对应的响应函数。</p>
+<p>html代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv1 = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>);</span><br><span class="line"><span class="keyword">var</span> oDiv2 = <span class="built_in">document</span>.getElementById(<span class="string">"div2"</span>);</span><br><span class="line"><span class="keyword">var</span> oDiv3 = <span class="built_in">document</span>.getElementById(<span class="string">"div3"</span>);</span><br><span class="line">oDiv1.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"oDiv1.onclick"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//oDiv2.onclick = function()&#123;</span></span><br><span class="line"><span class="comment">//console.log("oDiv2.onclick");</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line">oDiv3.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"oDiv3.onclick"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"document.onclick"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>8.2取消冒泡事件</p>
+<p>html代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv1 = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>);</span><br><span class="line"><span class="keyword">var</span> oDiv2 = <span class="built_in">document</span>.getElementById(<span class="string">"div2"</span>);</span><br><span class="line"><span class="keyword">var</span> oDiv3 = <span class="built_in">document</span>.getElementById(<span class="string">"div3"</span>);</span><br><span class="line">oDiv1.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"oDiv1.onclick"</span>);</span><br><span class="line">&#125;</span><br><span class="line">oDiv2.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"oDiv2.onclick"</span>);</span><br><span class="line">&#125;</span><br><span class="line">oDiv3.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">	ev.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"oDiv3.onclick"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"document.onclick"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>9、取消默认事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">	<span class="comment">//取消默认事件</span></span><br><span class="line">	ev.preventDefault();  </span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"124"</span>);</span><br><span class="line">	<span class="comment">//取消默认事件  还可以阻止冒泡</span></span><br><span class="line">	<span class="comment">//return false;  </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.onmousewheel = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//右键菜单事件</span></span><br><span class="line"><span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"123"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>10、事件捕获</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oWrap = <span class="built_in">document</span>.getElementById(<span class="string">"wrap"</span>);</span><br><span class="line"><span class="comment">//只能绑定一个相应函数</span></span><br><span class="line"><span class="comment">//oWrap.onclick = function()&#123;</span></span><br><span class="line"><span class="comment">//console.log("124");</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line">oWrap.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"125"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以绑定多个响应函数</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 参数一：事件类型 注意没有on</span></span><br><span class="line"><span class="comment"> 参数二：事件的触发函数 </span></span><br><span class="line"><span class="comment"> 参数三：bool值 false：事件冒泡  true：事件捕获 </span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line">oWrap.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"124"</span>);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line">oWrap.addEventListener(<span class="string">"click"</span>, theClick, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theClick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"123"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事件删除 匿名函数不能被删除 </span></span><br><span class="line">oWrap.removeEventListener(<span class="string">"click"</span>, theClick, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//IE678</span></span><br><span class="line"><span class="comment">//oWrap.attachEvent("onclick",function()&#123;</span></span><br><span class="line"><span class="comment">//&#125;,false);</span></span><br><span class="line"><span class="comment">////删除</span></span><br><span class="line"><span class="comment">//oWrap.detachEvent("onclick",函数名,false);</span></span><br><span class="line"><span class="built_in">console</span>.log(oWrap.attachEvent); <span class="comment">//undefined</span></span><br><span class="line">addEvent(oWrap, <span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'添加事件封装函数'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">obj, theEvent, fn</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(obj.attachEvent) &#123;</span><br><span class="line">		obj.attachEvent(<span class="string">'on'</span> + theEvent, fn, <span class="literal">false</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		obj.addEventListener(theEvent, fn, <span class="literal">false</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2018/02/02/关于e-target-value/">
+        关于e.target.value →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By TTTXY. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/TTTXY-01" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
