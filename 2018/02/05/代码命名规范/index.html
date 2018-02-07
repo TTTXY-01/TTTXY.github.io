@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2018 | TTTXY&#39;s Blog</title>
+  <title>JavaScript代码规范 | TTTXY&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -166,108 +166,80 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/01/19/使用data-的好处/">学会使用data-</a></h4>
-                            
-                            <p><time datetime="2018-01-19T12:36:34.000Z"><a href="/2018/01/19/使用data-的好处/">2018-01-19</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/01/19/Sass、LESS、Stylus区别总结/">Sass、LESS、Stylus区别总结</a></h4>
-                            
-                            <p><time datetime="2018-01-19T10:57:55.000Z"><a href="/2018/01/19/Sass、LESS、Stylus区别总结/">2018-01-19</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/01/17/canvas基础-1/">Canvas基础（一）</a></h4>
-                            
-                            <p><time datetime="2018-01-17T07:35:04.000Z"><a href="/2018/01/17/canvas基础-1/">2018-01-17</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/01/13/2018前端校招总结(HTML篇)/">前端校招总结(HTML篇)</a></h4>
-                            
-                            <p><time datetime="2018-01-13T01:07:08.000Z"><a href="/2018/01/13/2018前端校招总结(HTML篇)/">2018-01-13</a></time></p>
-                        </div>
-                    
-                        
-                            </div><div class="row boxes">
-                            
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/01/12/Author/">Title</a></h4>
-                            
-                            <p><time datetime="2018-01-12T11:09:29.000Z"><a href="/2018/01/12/Author/">2018-01-12</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-02-05T12:36:34.000Z" itemprop="datePublished">
+          2018-02-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/h5-css-html/'>h5 css html</a>
+    
+    
+</span>
+                <h1>JavaScript代码规范</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="JavaScript代码规范"><a href="#JavaScript代码规范" class="headerlink" title="JavaScript代码规范"></a>JavaScript代码规范</h1><ol>
+<li><p>运算符、操作符左右两边加空格</p>
+</li>
+<li><p>语句结尾加分号<code>;</code></p>
+</li>
+<li><p>函数定义 -&gt; <code>function</code> 空格 <code>sum</code> 空格 <code>()</code> 空格 <code>{}</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正确写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>箭头函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正确写法   </span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="function">(<span class="params">a,b</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//单参数写法</span></span><br><span class="line"><span class="keyword">let</span> square = <span class="function"><span class="params">number</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> number * number;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TabSize 定义为 2个空格</p>
+</li>
+<li><p>统一字符串使用<code>&quot;&quot;</code>,多行文本使用模版字符串``</p>
+</li>
+<li><p>涉及到判断是否一致，全部使用<code>===</code>和<code>!==</code></p>
+</li>
+<li><p>代码段中多余行删除</p>
+</li>
+<li><p>代码段与代码段之间加空行</p>
+</li>
+<li><p>注释</p>
+<p>单行注释，<code>//</code>后加空格</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我是注释</span></span><br><span class="line"><span class="comment">// 我是注释</span></span><br><span class="line"><span class="comment">// 我是注释</span></span><br></pre></td></tr></table></figure>
+<p>多行注释，<code>*</code>后注释前，需要加空格</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 我是多行注释</span></span><br><span class="line"><span class="comment"> * 我是多行注释</span></span><br><span class="line"><span class="comment"> * 我是多行注释</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+</li>
+</ol>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2018/02/07/webpack配置/" style="float: left;">
+        ← webpack配置
+    </a>
+    
+    
+    <a class="pull-right" href="/2018/02/05/深入理解JavaScript事件/">
+        深入理解JavaScript事件 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
