@@ -257,7 +257,7 @@
 <p><strong>step1:安装插件</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add html-webpack-plugin --dev</span><br></pre></td></tr></table></figure>
 <p><strong>step2:在webpack.config.js中引用插该件</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HTMLWebpackPlugin = <span class="built_in">require</span>(<span class="string">"html-webpack-plugin"</span>);</span><br><span class="line">plugins: [</span><br><span class="line">	<span class="keyword">new</span> HTMLWebpackPlugin(&#123;</span><br><span class="line">		template: <span class="string">"./index.html"</span>,</span><br><span class="line">		filename: <span class="string">"index.html"</span>,</span><br><span class="line">		title: <span class="string">"首页"</span>,</span><br><span class="line">		inject: <span class="string">"body"</span></span><br><span class="line">	&#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HTMLWebpackPlugin = <span class="built_in">require</span>(<span class="string">"html-webpack-plugin"</span>);</span><br><span class="line">plugins: [</span><br><span class="line">	<span class="keyword">new</span> HTMLWebpackPlugin(&#123;</span><br><span class="line">		template: <span class="string">"./index.html"</span>,</span><br><span class="line">		filename: <span class="string">"index.html"</span>,</span><br><span class="line">		title: <span class="string">"首页"</span>,</span><br><span class="line">		inject: <span class="string">"body"</span>  <span class="comment">//放在哪</span></span><br><span class="line">	&#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>此时可执行<code>webpack</code>命令看效果</strong></li>
 </ul>
@@ -270,6 +270,8 @@
 <li><strong>运行<code>yarn start</code></strong></li>
 </ul>
 <p>打开<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></p>
+<h3 id="代码压缩及丑化"><a href="#代码压缩及丑化" class="headerlink" title="代码压缩及丑化"></a>代码压缩及丑化</h3><p>在webpack.config.js 中添加 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">"webpack"</span>);</span><br><span class="line"></span><br><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
 <h3 id="Configuration（相关参数）"><a href="#Configuration（相关参数）" class="headerlink" title="Configuration（相关参数）"></a>Configuration（相关参数）</h3><p> 可以进行一系列的配置，支持如下的配置信息</p>
 <ul>
 <li>title : 用于生成的HTML文件的标题。</li>
@@ -292,6 +294,10 @@
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2018/02/26/React学习/" style="float: left;">
+        ← React学习
+    </a>
     
     
     <a class="pull-right" href="/2018/02/05/代码命名规范/">
